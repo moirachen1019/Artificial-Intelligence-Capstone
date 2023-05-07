@@ -24,7 +24,7 @@ class Game_Control():
         print(colored("Secret! Mines are at:" + str(self.real_mines), "grey"))
         # initial safe cells
         self.inintial_safes = []
-        inintial_steps = round(math.sqrt(HEIGHT * WIDTH) / 2)
+        inintial_steps = round(math.sqrt(HEIGHT * WIDTH))
         while len(self.inintial_safes) != inintial_steps:
             i = random.randrange(HEIGHT)
             j = random.randrange(WIDTH)
@@ -221,8 +221,8 @@ class AI_Player():
         #* follow the game flow to maintain KB
         no_marking = 0 # the number of rounds without new marked cells
         while True:
-            # apply global constraint when unmarked cells is less than 10
-            if HEIGHT * WIDTH - len(self.safes) + len(self.mines) <= 10:
+            # apply global constraint when unmarked cells is less than 9
+            if HEIGHT * WIDTH - len(self.safes) + len(self.mines) <= 9:
                 self.global_constraint(len(game.real_mines) - len(self.mines))
             exist_single = 0
             single_literal = []
